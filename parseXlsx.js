@@ -26,9 +26,11 @@ function encodeStr(obj) {
 }
 
 function encodeItem(obj) {
-  obj.kana = encodeStr(obj.kana)
-  obj.kanzi = encodeStr(obj.kanzi)
-  obj.meaning = encodeStr(obj.meaning)
+  for (var k in obj) {
+    if (obj.hasOwnProperty(k)) {
+      obj[k] = encodeStr(obj[k])
+    }
+  }
   return obj
 }
 
