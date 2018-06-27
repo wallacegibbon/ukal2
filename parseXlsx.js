@@ -8,9 +8,9 @@ const src = require("./src.json")
  * @returns {Object} e.g. { tone: '0', kana: 'ちかてつ', kanzi: '地下鉄',
  *    meaning: '地铁', unit: 4 }
  */
-function buildRcd(dataArr) {
+function buildRcd(dataArr, idx) {
   const [ tone, kana, kanzi, meaning, unit ] = dataArr
-  return { tone, kana, kanzi, meaning, unit }
+  return { tone, kana, kanzi, meaning, unit, idx }
 }
 
 function trimObj(obj) {
