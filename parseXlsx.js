@@ -4,13 +4,13 @@ const xlsx = require("node-xlsx")
 const src = require("./src.json")
 
 /**
- * @param {[string]} dataArr e.g. [ '0', 'ちかてつ', '地下鉄', '地铁', 4]
+ * @param {[string]} dataArr e.g. [ '0', 'ちかてつ', '地下鉄', '名', '地铁', 4]
  * @returns {Object} e.g. { tone: '0', kana: 'ちかてつ', kanzi: '地下鉄',
- *    meaning: '地铁', unit: 4 }
+ *    type: '名', meaning: '地铁', unit: 4 }
  */
 function buildRcd(dataArr, idx) {
-  const [ tone, kana, kanzi, meaning, unit ] = dataArr
-  return { tone, kana, kanzi, meaning, unit, idx }
+  const [ tone, kana, kanzi, type, meaning, unit ] = dataArr
+  return { tone, kana, kanzi, type, meaning, unit, idx }
 }
 
 function trimObj(obj) {
@@ -62,7 +62,7 @@ function collectKanzi(src, table) {
     const tgts = findIndexes(x, table)
     for (var x of tgts) {
       const d = table[x]
-      console.log(`\t${d.kanzi}[${d.kana}](${d.tone || 0}) <${d.meaning}> --- (unit ${d.unit})\r`)
+      console.log(`\t${d.kanzi}[${d.kana}](${d.tone || '-'}) [${d.type || '-'}] <${d.meaning}> --- (unit ${d.unit})\r`)
     }
   }
 }
