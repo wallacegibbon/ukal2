@@ -62,7 +62,7 @@ function collectKanzi(src, table) {
     const tgts = findIndexes(x, table)
     for (var x of tgts) {
       const d = table[x]
-      console.log(`\t${d.kanzi}[${d.kana}](${d.tone || '-'}) [${d.type || '-'}] <${d.meaning}> --- (unit ${d.unit})\r`)
+      console.log(`\t${d.kanzi}[${d.kana}](${d.tone}) [${d.type || '-'}] <${d.meaning}> --- (unit ${d.unit})\r`)
     }
   }
 }
