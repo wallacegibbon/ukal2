@@ -62,11 +62,16 @@ function collectKanzi(src, table) {
     const tgts = findIndexes(x, table)
     for (var x of tgts) {
       const d = table[x]
-      console.log(`\t${d.kanzi}[${d.kana}](${d.tone}) [${d.type || '-'}] <${d.meaning}> --- (lesson ${d.lesson})\r`)
+      console.log(
+        `\t${d.kanzi}[${d.kana}](${ensureNotUndefined(d.tone)}) [${d.type || '-'}]`,
+        `<${d.meaning}> --- (lesson ${d.lesson})\r`)
     }
   }
 }
 
+function ensureNotUndefined(obj) {
+  return (typeof obj == 'undefined' ? '' : obj)
+}
 
 const tgtFile = process.argv[2]
 if (!tgtFile) {
